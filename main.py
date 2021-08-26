@@ -15,7 +15,8 @@ class Currency:
     def get_currency_price(self):
         full_page = requests.get(self.DOLLAR_RUB, headers=self.headers)
         soup = BeautifulSoup(full_page.content, 'html.parser')
-        convert = soup.find_all("span", {"class": "DFlfde", "class": "SwHCTb", "data-precision": 2})
+        convert = soup.find_all("span", {"class": "DFlfde", "data-precision": 2})
+
         return convert[0].text
 
 
@@ -23,5 +24,59 @@ class Currency:
         currency = self.get_currency_price().replace(",", ".")
         print("Сейчас курс доллара: " + currency)
 
-currency = Currency()
+
+#currency = Currency()
+#currency.check_currrency()
+
+
+
+class Stocks:
+    ticker = ""
+    price = 0
+    name = ""
+    quantity = 0
+    commission = 0
+    purchase_date = ""
+
+    def __init__(self):
+        self.ticker = "mtss"
+        self.price = 345.3
+        self.quantity = 10
+
+    def total_purchase_value(self, price, quantity):
+        return float(price) * float(quantity)
+
+
+
+
+class main_invest:
+    S = Stocks()
+    url = "https://bcs-express.ru/kotirovki-i-grafiki/" + S.ticker
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.2 Safari/605.1.15'}
+
+    current_converted_price = ""
+
+    def __init__(self):
+        self.current_converted_price = self.get_currency_price()
+
+
+
+
+    def get_currency_price(self):
+        full_page = requests.get(self.url, headers=self.headers)
+
+        soup = BeautifulSoup(full_page.content, 'html.parser')
+        convert = soup.find("div", {"class": "quote-head__price-value"})
+        return convert.get_text()
+
+
+    def check_currrency(self):
+        currency = self.get_currency_price().replace(",", ".")
+        print("Сейчас стоимость акции: " + currency)
+
+    print("Цена покупки: " + str(S.price))
+
+
+currency = main_invest()
 currency.check_currrency()
+
