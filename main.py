@@ -12,8 +12,41 @@ def connect_database(_ticker) -> float:
     #improve query
     cursor.execute(sql)
     p = cursor.fetchall()[0][0]
-
     return p
+
+
+def update_db(_ticker, _current_price):
+    conn = sqlite3.connect("mydatabase.db")
+    # conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    #sql = "UPDATE stocks SET current_price =" + str(_current_price) +" WHERE ticker = '" + _ticker + "'"
+    sql = "UPDATE stocks SET current_price = 1223 WHERE ticker = 'mtss'"
+
+    cursor.execute(sql)
+
+    print(cursor.fetchall())
+
+
+def update_sqlite_table(_ticker, _current_price):
+    try:
+        sqlite_connection = sqlite3.connect('mydatabase.db')
+        cursor = sqlite_connection.cursor()
+        print("Подключен к SQLite")
+
+        sql_update_query = "UPDATE stocks SET current_price =" + str(_current_price) +" WHERE ticker ='" + _ticker + "'"
+        cursor.execute(sql_update_query)
+        sqlite_connection.commit()
+        print("Запись успешно обновлена")
+        cursor.close()
+
+    except sqlite3.Error as error:
+        print("Ошибка при работе с SQLite", error)
+    finally:
+        if sqlite_connection:
+            sqlite_connection.close()
+            print("Соединение с SQLite закрыто")
+
 
 
 
@@ -87,6 +120,10 @@ class main_invest:
     def check_currrency(self):
         currency = self.get_currency_price().replace(",", ".")
         print("Сейчас стоимость акции: " + currency)
+        update_sqlite_table(self.ticker, currency)
+
+
+
 
     print("Цена покупки: " + str(price))
 
