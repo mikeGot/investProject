@@ -15,19 +15,6 @@ def connect_database(_ticker) -> float:
     return p
 
 
-def update_db(_ticker, _current_price):
-    conn = sqlite3.connect("mydatabase.db")
-    # conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-
-    #sql = "UPDATE stocks SET current_price =" + str(_current_price) +" WHERE ticker = '" + _ticker + "'"
-    sql = "UPDATE stocks SET current_price = 1223 WHERE ticker = 'mtss'"
-
-    cursor.execute(sql)
-
-    print(cursor.fetchall())
-
-
 def update_sqlite_table(_ticker, _current_price):
     try:
         sqlite_connection = sqlite3.connect('mydatabase.db')
@@ -95,22 +82,20 @@ class Stocks:
 
 class main_invest:
     #S = Stocks()
-    ticker = "gazp"
-    price = connect_database(ticker)
 
-    url = "https://bcs-express.ru/kotirovki-i-grafiki/" + ticker
-    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.2 Safari/605.1.15'}
 
-    current_converted_price = ""
-
-    def __init__(self):
-        self.current_converted_price = self.get_currency_price()
+    def __init__(self, ticker):
+        self.ticker = ticker
+        self.price = connect_database(self.ticker)
 
 
 
 
     def get_currency_price(self):
-        full_page = requests.get(self.url, headers=self.headers)
+        url = "https://bcs-express.ru/kotirovki-i-grafiki/" + self.ticker
+        headers = { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.2 Safari/605.1.15'}
+
+        full_page = requests.get(url, headers=headers)
 
         soup = BeautifulSoup(full_page.content, 'html.parser')
         convert = soup.find("div", {"class": "quote-head__price-value"})
@@ -121,13 +106,28 @@ class main_invest:
         currency = self.get_currency_price().replace(",", ".")
         print("Сейчас стоимость акции: " + currency)
         update_sqlite_table(self.ticker, currency)
+        print("Цена покупки: " + str(self.price))
 
 
 
+def update_all_current_prices():
+    sqlite_connection = sqlite3.connect('mydatabase.db')
+    cursor = sqlite_connection.cursor()
+    print("Подключен к SQLite")
 
-    print("Цена покупки: " + str(price))
+    sql_update_query = "SELECT ticker FROM stocks"
+    cursor.execute(sql_update_query)
+    p = cursor.fetchall()
+    sqlite_connection.commit()
+    cursor.close()
+
+    for i in p:
+        print(i[0])
+        currency = main_invest(i[0])
+        currency.check_currrency()
+    print("Data is updated")
 
 
-currency = main_invest()
-currency.check_currrency()
+update_all_current_prices()
+
 
