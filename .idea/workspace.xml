@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98f77cc5-e006-4f5c-a58a-a5f550172962" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -32,7 +32,28 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
+    <configuration name="database" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="investProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/database.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="investProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -57,6 +78,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.database" />
       </list>
     </recent_temporary>
   </component>
@@ -86,31 +108,56 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1259" height="286" key="GridCell.Tab.0.bottom" timestamp="1630009349688">
+    <state x="349" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1630080153208">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
-    <state width="1259" height="286" key="GridCell.Tab.0.bottom/0.0.1280.1024@0.0.1280.1024" timestamp="1630009349688" />
+    <state x="349" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.1024@0.0.1280.1024" timestamp="1630080153208" />
+    <state width="1259" height="320" key="GridCell.Tab.0.bottom" timestamp="1630503387422">
+      <screen x="0" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1259" height="320" key="GridCell.Tab.0.bottom/0.0.1280.1024@0.0.1280.1024" timestamp="1630503387422" />
     <state width="1259" height="286" key="GridCell.Tab.0.bottom/0.23.1280.956@0.23.1280.956" timestamp="1629993345774" />
-    <state width="1259" height="286" key="GridCell.Tab.0.center" timestamp="1630009349687">
+    <state width="1259" height="286" key="GridCell.Tab.0.bottom/0.23.1280.957@0.23.1280.957" timestamp="1630165226653" />
+    <state width="1259" height="320" key="GridCell.Tab.0.center" timestamp="1630503387420">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
-    <state width="1259" height="286" key="GridCell.Tab.0.center/0.0.1280.1024@0.0.1280.1024" timestamp="1630009349687" />
+    <state width="1259" height="320" key="GridCell.Tab.0.center/0.0.1280.1024@0.0.1280.1024" timestamp="1630503387420" />
     <state width="1259" height="286" key="GridCell.Tab.0.center/0.23.1280.956@0.23.1280.956" timestamp="1629993345773" />
-    <state width="1259" height="286" key="GridCell.Tab.0.left" timestamp="1630009349686">
+    <state width="1259" height="286" key="GridCell.Tab.0.center/0.23.1280.957@0.23.1280.957" timestamp="1630165226652" />
+    <state width="1259" height="320" key="GridCell.Tab.0.left" timestamp="1630503387420">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
-    <state width="1259" height="286" key="GridCell.Tab.0.left/0.0.1280.1024@0.0.1280.1024" timestamp="1630009349686" />
+    <state width="1259" height="320" key="GridCell.Tab.0.left/0.0.1280.1024@0.0.1280.1024" timestamp="1630503387420" />
     <state width="1259" height="286" key="GridCell.Tab.0.left/0.23.1280.956@0.23.1280.956" timestamp="1629993345773" />
-    <state width="1259" height="286" key="GridCell.Tab.0.right" timestamp="1630009349688">
+    <state width="1259" height="286" key="GridCell.Tab.0.left/0.23.1280.957@0.23.1280.957" timestamp="1630165226651" />
+    <state width="1259" height="320" key="GridCell.Tab.0.right" timestamp="1630503387421">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
-    <state width="1259" height="286" key="GridCell.Tab.0.right/0.0.1280.1024@0.0.1280.1024" timestamp="1630009349688" />
+    <state width="1259" height="320" key="GridCell.Tab.0.right/0.0.1280.1024@0.0.1280.1024" timestamp="1630503387421" />
     <state width="1259" height="286" key="GridCell.Tab.0.right/0.23.1280.956@0.23.1280.956" timestamp="1629993345774" />
-    <state x="319" y="332" key="com.intellij.ide.util.TipDialog" timestamp="1629995316527">
-      <screen x="0" y="23" width="1280" height="952" />
+    <state width="1259" height="286" key="GridCell.Tab.0.right/0.23.1280.957@0.23.1280.957" timestamp="1630165226652" />
+    <state width="1259" height="353" key="GridCell.Tab.1.bottom" timestamp="1630502428871">
+      <screen x="0" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1259" height="353" key="GridCell.Tab.1.bottom/0.0.1280.1024@0.0.1280.1024" timestamp="1630502428871" />
+    <state width="1259" height="353" key="GridCell.Tab.1.center" timestamp="1630502428870">
+      <screen x="0" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1259" height="353" key="GridCell.Tab.1.center/0.0.1280.1024@0.0.1280.1024" timestamp="1630502428870" />
+    <state width="1259" height="353" key="GridCell.Tab.1.left" timestamp="1630502428869">
+      <screen x="0" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1259" height="353" key="GridCell.Tab.1.left/0.0.1280.1024@0.0.1280.1024" timestamp="1630502428869" />
+    <state width="1259" height="353" key="GridCell.Tab.1.right" timestamp="1630502428870">
+      <screen x="0" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1259" height="353" key="GridCell.Tab.1.right/0.0.1280.1024@0.0.1280.1024" timestamp="1630502428870" />
+    <state x="334" y="327" key="com.intellij.ide.util.TipDialog" timestamp="1630250750871">
+      <screen x="0" y="23" width="1280" height="957" />
     </state>
     <state x="319" y="332" key="com.intellij.ide.util.TipDialog/0.23.1280.952@0.23.1280.952" timestamp="1629995316527" />
     <state x="319" y="332" key="com.intellij.ide.util.TipDialog/0.23.1280.954@0.23.1280.954" timestamp="1629989015121" />
+    <state x="334" y="327" key="com.intellij.ide.util.TipDialog/0.23.1280.957@0.23.1280.957" timestamp="1630250750871" />
     <state x="309" y="208" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1629990510187">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>

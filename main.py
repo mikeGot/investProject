@@ -1,5 +1,20 @@
 import requests
 from bs4 import BeautifulSoup
+import sqlite3
+
+
+def connect_database(_ticker) -> float:
+    conn = sqlite3.connect("mydatabase.db")
+    # conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    sql = "SELECT price FROM stocks WHERE ticker = '" + _ticker + "'"
+    #improve query
+    cursor.execute(sql)
+    p = cursor.fetchall()[0][0]
+
+    return p
+
 
 
 class Currency:
@@ -28,8 +43,6 @@ class Currency:
 #currency = Currency()
 #currency.check_currrency()
 
-
-
 class Stocks:
     ticker = ""
     price = 0
@@ -39,19 +52,20 @@ class Stocks:
     purchase_date = ""
 
     def __init__(self):
-        self.ticker = "mtss"
-        self.price = 345.3
+        self.ticker = "gazp"
+        self.price = connect_database("gazp")
         self.quantity = 10
 
     def total_purchase_value(self, price, quantity):
         return float(price) * float(quantity)
 
 
-
-
 class main_invest:
-    S = Stocks()
-    url = "https://bcs-express.ru/kotirovki-i-grafiki/" + S.ticker
+    #S = Stocks()
+    ticker = "gazp"
+    price = connect_database(ticker)
+
+    url = "https://bcs-express.ru/kotirovki-i-grafiki/" + ticker
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.2 Safari/605.1.15'}
 
     current_converted_price = ""
@@ -74,7 +88,7 @@ class main_invest:
         currency = self.get_currency_price().replace(",", ".")
         print("Сейчас стоимость акции: " + currency)
 
-    print("Цена покупки: " + str(S.price))
+    print("Цена покупки: " + str(price))
 
 
 currency = main_invest()
